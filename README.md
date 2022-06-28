@@ -10,8 +10,8 @@
 => Retrofit 사이트 https://square.github.io/retrofit/  
 => Maven 저장소 https://mvnrepository.com/  
 
-=> Google Maps 사이트 https://developers.google.com/maps/documentation/android-sdk?hl=ko
-=> Google Maps Android Rx 사이트 https://github.com/googlemaps/android-maps-rx
+=> Google Maps 사이트 https://developers.google.com/maps/documentation/android-sdk?hl=ko  
+=> Google Maps Android Rx 사이트 https://github.com/googlemaps/android-maps-rx  
   
 ## Implemetations  
   
