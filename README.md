@@ -22,7 +22,8 @@ implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 implementation 'com.squareup.retrofit2:converter-gson:2.9.0'  //  converter-jackson   
   
 ## Gradle 설정  
-  
+<pre>
+</code>
 allprojects {  
     repositories {  
         maven { url "https://oss.jfrog.org/libs-snapshot" }  
@@ -36,7 +37,8 @@ dependencies {
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)  
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'  
 }  
-  
+</code>
+</pre>  
 ## 목표  
   
 메모장  
