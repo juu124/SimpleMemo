@@ -29,5 +29,4 @@ class LocationConverters {
         //  Todo : MemoLocationVO -> 위치 정보
         return "${location.latitude}|${location.longitude}|${location.altitude}"
     }
-
 }

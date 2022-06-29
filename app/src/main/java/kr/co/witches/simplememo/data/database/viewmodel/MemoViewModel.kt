@@ -10,8 +10,6 @@ import kr.co.witches.simplememo.model.MemoVO
 
 class MemoViewModel(private val repository: MemoRepository): ViewModel() {
 
-    private val memos: LiveData<List<MemoVO>> = repository.allMemos.asLiveData()
-
     fun insert(memo: MemoVO) = viewModelScope.launch {
         repository.insertMemo(memo)
     }
@@ -24,8 +22,8 @@ class MemoViewModel(private val repository: MemoRepository): ViewModel() {
         repository.deleteAll()
     }
 
-    fun memos(): LiveData<List<MemoVO>> {
-        return memos
+    fun getAll(): LiveData<List<MemoVO>> {
+        return repository.getAll().asLiveData()
     }
 
 }
