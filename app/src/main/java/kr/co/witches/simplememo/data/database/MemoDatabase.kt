@@ -7,13 +7,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kr.co.witches.simplememo.data.database.dao.MemoDao
 import kr.co.witches.simplememo.model.MemoVO
-import kr.co.witches.simplememo.model.converter.CommonConverters
 import kr.co.witches.simplememo.model.converter.LocationConverters
 import kr.co.witches.simplememo.model.converter.MemoConverters
 import kr.co.witches.simplememo.model.converter.TimeStampConverters
 
 @Database(version = 1, exportSchema = false, entities = [MemoVO::class])
-@TypeConverters(value = [CommonConverters::class, LocationConverters::class, MemoConverters::class, TimeStampConverters::class])
+@TypeConverters(value = [LocationConverters::class, MemoConverters::class, TimeStampConverters::class])
 abstract class MemoDatabase : RoomDatabase() {
 
     abstract fun memoDao(): MemoDao

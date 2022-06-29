@@ -1,37 +1,27 @@
 package kr.co.witches.simplememo.ui.main
 
-import androidx.lifecycle.AndroidViewModel
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kr.co.witches.simplememo.AppApplication
+import androidx.lifecycle.ViewModel
+import kr.co.witches.simplememo.data.database.repository.MemoRepository
 import kr.co.witches.simplememo.model.MemoVO
 
-class MainViewModel(private val application: AppApplication) : AndroidViewModel(application) {
+class MainViewModel : ViewModel() {
 
-    //  MainActivity 에서 MainViewModel 데이터를 접근할 경우 필요
-    private val _data = MutableLiveData<List<MemoVO>>()
-    val data: LiveData<List<MemoVO>> = _data
-
-    private fun getAllData() {
-        //  전체 데이터
-        //  application.repository.allMemos
-    }
-
-    private fun getFavoriteData() {
-        //  필터링 데이터
-        //  application.repository.allMemos
-    }
+//    private val _memos = MutableLiveData<List<MemoVO>>()
+//    val memos: LiveData<List<MemoVO>> = _memos
 
     /**
      * 즐겨찾기 버튼 상태
      */
-    var isFavorite = false
-    fun setFavorite() {
-        isFavorite = !isFavorite
-        if (isFavorite) {
-            getFavoriteData()
+    private val _isFavorite = MutableLiveData<Boolean>()
+    var isFavorite: LiveData<Boolean> = _isFavorite
+    fun setFavorite(isChecked: Boolean) {
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            _isFavorite.value = isChecked
         } else {
-            getAllData()
+            _isFavorite.postValue(isChecked)
         }
     }
 

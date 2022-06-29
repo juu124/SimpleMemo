@@ -16,5 +16,4 @@ class MemoConverters {
     fun memoListToString(memos: ArrayList<MemoVO>): String {
         return ""
     }
-
 }

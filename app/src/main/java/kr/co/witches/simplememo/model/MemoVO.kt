@@ -17,7 +17,7 @@ data class MemoVO(
     @ColumnInfo(name = "regDate") val regDate: Long,
     @ColumnInfo(name = "modDate") val modDate: Long,
     @ColumnInfo(name = "delDate") val delDate: Long,
-    @ColumnInfo(name = "isUse") val isUse: Boolean
+    @ColumnInfo(name = "isUse") val isUse: Int
 ): Parcelable {
-    constructor(): this(null, arrayListOf(), 0, 0, 0, false)
+    constructor(): this(null, arrayListOf(), 0, 0, 0, 0)
 }
