@@ -41,8 +41,7 @@
         </activity>
         <activity
             android:name="kr.co.witches.simplememo.ui.main.AddMemo"
-            android:windowSoftInputMode="adjustResize|adjustNothing" >
-        </activity>
+            android:windowSoftInputMode="adjustNothing" />
 
         <uses-library
             android:name="androidx.window.extensions"

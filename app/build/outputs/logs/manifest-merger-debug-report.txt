@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
 MERGED from [androidx.databinding:databinding-adapters:7.2.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\b8db61265165313e878130f4eee7f2ab\transformed\databinding-adapters-7.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-ktx:7.2.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\e55a32086136399389282492cb09875f\transformed\databinding-ktx-7.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:7.2.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\4a96630aa7f87971c6c94f429b042c07\transformed\databinding-runtime-7.2.1\AndroidManifest.xml:17:1-24:12
@@ -96,25 +96,25 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\97278025a066c4f1e523a1143663c9da\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.reactivex.rxjava3:rxandroid:3.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\48353e09f21fbccbe07b9176a6111b63\transformed\rxandroid-3.0.0\AndroidManifest.xml:15:1-20:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\d70f6c043eb6bb9d282f07b53117de07\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
 	package
 		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:3:5-39
 		INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
+		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
 		INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-34:12
+		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:1-32:12
 		INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:5:5-32:19
+ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:5:5-30:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.material:material:1.5.0-alpha04] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\8159c15e8ed5ab4e7c8f0a2ae3397494\transformed\material-1.5.0-alpha04\AndroidManifest.xml:22:5-20
@@ -214,11 +214,11 @@ ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\Andro
 	android:name
 		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:24:27-74
 activity#kr.co.witches.simplememo.ui.main.AddMemo
-ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:27:9-31:20
+ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:27:9-29:68
 	android:windowSoftInputMode
-		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:28:13-69
+		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:29:13-56
 	android:name
-		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:27:19-50
+		ADDED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:28:13-44
 uses-sdk
 INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml

@@ -1,5 +1,6 @@
 package kr.co.witches.simplememo.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CompoundButton
@@ -45,7 +46,8 @@ class MainActivity : AppCompatActivity() {
         addListeners()
         val btnAddMemo: Button = findViewById(R.id.btnAddMemo)
         btnAddMemo.setOnClickListener{
-            Toast.makeText(applicationContext,"버튼이 눌림", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AddMemo::class.java)
+            startActivity(intent)
         }
     }
 

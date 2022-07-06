@@ -2603,9 +2603,10 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btnAddImg
 id btnAddMemo
 id btnAddMemoCheck
-id btnClose
+id btnBack
 id btn_favorite
 id buttonPanel
 id cache_measures
@@ -2853,7 +2854,6 @@ id percent
 id pin
 id position
 id postLayout
-id profile
 id progress_circular
 id progress_horizontal
 id radio
@@ -3112,7 +3112,6 @@ layout design_text_input_start_icon
 layout item_memo_image
 layout item_memo_map
 layout item_memo_text
-layout item_recyclerview
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

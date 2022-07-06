@@ -1,82 +1,90 @@
 [
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/layout_activity_main.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/layout/activity_main.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-pngs-1:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/xml_data_extraction_rules.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\layout\\activity_main.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/drawable_ic_launcher_background.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\layout_item_memo_text.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\layout\\item_memo_text.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\layout_item_memo_image.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\layout\\item_memo_image.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/layout_item_memo_text.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/layout/item_memo_text.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/xml_backup_rules.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\layout_item_memo_map.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\layout\\item_memo_map.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/layout_item_memo_image.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/layout/item_memo_image.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "kr.co.witches.simplememo.app-pngs-1:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/layout_item_memo_map.xml.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/layout/item_memo_map.xml"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\layout_add_memo.xml.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\layout\\add_memo.xml"
     },
     {
-        "merged": "kr.co.witches.simplememo.app-merged_res-6:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "kr.co.witches.simplememo.app-main-8:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-merged_res-6:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\juu12\\AndroidStudioProjects\\daemon\\7.3.3\\kr.co.witches.simplememo.app-main-8:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "kr.co.witches.simplememo.app-merged_res-6:/layout_add_memo.xml.flat",
+        "source": "kr.co.witches.simplememo.app-main-8:/layout/add_memo.xml"
     }
 ]
