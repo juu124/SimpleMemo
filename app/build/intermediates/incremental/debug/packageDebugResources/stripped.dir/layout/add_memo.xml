@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.AddMemo">
+
+
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:hint="제목을 입력하세요."
+        android:textSize="25dp"
+        android:singleLine="true"/>
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="15dp">-->
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@null"
+            android:hint="내용을 입력하세요."
+            android:textSize="19dp"
+            android:gravity="top"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="20dp"/>
+    <!--</ScrollView>-->
+
+    <!-- <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         />-->
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddMemoCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="84dp"
+            android:text="메모추가" />
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="84dp"
+            android:text="작성취소" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+

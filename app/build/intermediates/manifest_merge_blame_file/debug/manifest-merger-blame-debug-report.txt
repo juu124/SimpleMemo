@@ -1,0 +1,227 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="kr.co.witches.simplememo"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml
+10
+11    <!-- Required permission for App measurement to run. -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:23:5-67
+12-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:23:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:24:5-79
+13-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:24:22-76
+14    <uses-permission android:name="android.permission.WAKE_LOCK" />
+14-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:25:5-68
+14-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:25:22-65
+15    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+15-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:26:5-110
+15-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:26:22-107
+16    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+16-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\c8e94abeb5f7f72991e5eb0a32c68451\transformed\play-services-measurement-api-21.0.0\AndroidManifest.xml:25:5-79
+16-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\c8e94abeb5f7f72991e5eb0a32c68451\transformed\play-services-measurement-api-21.0.0\AndroidManifest.xml:25:22-76
+17
+18    <application
+18-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:5:5-32:19
+19        android:name="kr.co.witches.simplememo.AppApplication"
+19-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:6:9-39
+20        android:allowBackup="true"
+20-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:7:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.7.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\764d7cdd99cc26e33d3415dd79938200\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+22        android:debuggable="true"
+23        android:fullBackupContent="@xml/backup_rules"
+23-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:8:9-54
+24        android:icon="@mipmap/ic_launcher"
+24-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:9:9-43
+25        android:label="@string/app_name"
+25-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:10:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:11:9-54
+27        android:supportsRtl="true"
+27-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:12:9-35
+28        android:testOnly="true"
+29        android:theme="@style/Theme.SimpleMemo" >
+29-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:13:9-48
+30        <activity
+30-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:15:9-26:20
+31            android:name="kr.co.witches.simplememo.ui.main.MainActivity"
+31-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:16:13-49
+32            android:exported="true"
+32-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:17:13-36
+33            android:label="@string/app_name"
+33-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:18:13-45
+34            android:screenOrientation="portrait"
+34-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:19:13-49
+35            android:theme="@style/Theme.SimpleMemo" >
+35-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:20:13-52
+36            <intent-filter>
+36-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:21:13-25:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:22:17-69
+37-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:22:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:24:17-77
+39-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:24:27-74
+40            </intent-filter>
+41        </activity>
+42        <activity
+42-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:27:9-31:20
+43            android:name="kr.co.witches.simplememo.ui.main.AddMemo"
+43-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:27:19-50
+44            android:windowSoftInputMode="adjustResize|adjustNothing" >
+44-->C:\Users\juu12\AndroidStudioProjects\2022_UnivGJ_2\app\src\main\AndroidManifest.xml:28:13-69
+45        </activity>
+46
+47        <uses-library
+47-->[androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+48            android:name="androidx.window.extensions"
+48-->[androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+49            android:required="false" />
+49-->[androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+50        <uses-library
+50-->[androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+51            android:name="androidx.window.sidecar"
+51-->[androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+52            android:required="false" />
+52-->[androidx.window:window:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3fd314e85da26d856e9f6676560f4238\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+53
+54        <meta-data
+54-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\7a2bdb4e312128373b102580e6dc675d\transformed\okhttp3-integration-4.12.0\AndroidManifest.xml:11:9-13:43
+55            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+55-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\7a2bdb4e312128373b102580e6dc675d\transformed\okhttp3-integration-4.12.0\AndroidManifest.xml:12:13-84
+56            android:value="GlideModule" />
+56-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\7a2bdb4e312128373b102580e6dc675d\transformed\okhttp3-integration-4.12.0\AndroidManifest.xml:13:13-40
+57
+58        <activity
+58-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\989bd1483d8c76da5ae97a8426590b0a\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+59            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+59-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\989bd1483d8c76da5ae97a8426590b0a\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+60            android:exported="false"
+60-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\989bd1483d8c76da5ae97a8426590b0a\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+61            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+61-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\989bd1483d8c76da5ae97a8426590b0a\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+62
+63        <service
+63-->[com.google.firebase:firebase-analytics-ktx:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3395c80f76713bb3b1976db3f4adf1c6\transformed\firebase-analytics-ktx-21.0.0\AndroidManifest.xml:8:9-14:19
+64            android:name="com.google.firebase.components.ComponentDiscoveryService"
+64-->[com.google.firebase:firebase-analytics-ktx:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3395c80f76713bb3b1976db3f4adf1c6\transformed\firebase-analytics-ktx-21.0.0\AndroidManifest.xml:9:13-84
+65            android:directBootAware="true"
+65-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:35:13-43
+66            android:exported="false" >
+66-->[com.google.firebase:firebase-analytics-ktx:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3395c80f76713bb3b1976db3f4adf1c6\transformed\firebase-analytics-ktx-21.0.0\AndroidManifest.xml:10:13-37
+67            <meta-data
+67-->[com.google.firebase:firebase-analytics-ktx:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3395c80f76713bb3b1976db3f4adf1c6\transformed\firebase-analytics-ktx-21.0.0\AndroidManifest.xml:11:13-13:85
+68                android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar"
+68-->[com.google.firebase:firebase-analytics-ktx:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3395c80f76713bb3b1976db3f4adf1c6\transformed\firebase-analytics-ktx-21.0.0\AndroidManifest.xml:12:17-126
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-analytics-ktx:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3395c80f76713bb3b1976db3f4adf1c6\transformed\firebase-analytics-ktx-21.0.0\AndroidManifest.xml:13:17-82
+70            <meta-data
+70-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\c8e94abeb5f7f72991e5eb0a32c68451\transformed\play-services-measurement-api-21.0.0\AndroidManifest.xml:31:13-33:85
+71                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+71-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\c8e94abeb5f7f72991e5eb0a32c68451\transformed\play-services-measurement-api-21.0.0\AndroidManifest.xml:32:17-139
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\c8e94abeb5f7f72991e5eb0a32c68451\transformed\play-services-measurement-api-21.0.0\AndroidManifest.xml:33:17-82
+73            <meta-data
+73-->[com.google.firebase:firebase-common-ktx:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\25ba53fbc962832405c0cdcde025e5a6\transformed\firebase-common-ktx-20.1.0\AndroidManifest.xml:15:13-17:85
+74                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+74-->[com.google.firebase:firebase-common-ktx:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\25ba53fbc962832405c0cdcde025e5a6\transformed\firebase-common-ktx-20.1.0\AndroidManifest.xml:16:17-113
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[com.google.firebase:firebase-common-ktx:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\25ba53fbc962832405c0cdcde025e5a6\transformed\firebase-common-ktx-20.1.0\AndroidManifest.xml:17:17-82
+76            <meta-data
+76-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\e9eb7d1f2eaa2189be7a3e1bed6455be\transformed\firebase-installations-17.0.1\AndroidManifest.xml:18:13-20:85
+77                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+77-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\e9eb7d1f2eaa2189be7a3e1bed6455be\transformed\firebase-installations-17.0.1\AndroidManifest.xml:19:17-127
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\e9eb7d1f2eaa2189be7a3e1bed6455be\transformed\firebase-installations-17.0.1\AndroidManifest.xml:20:17-82
+79        </service>
+80
+81        <receiver
+81-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:29:9-33:20
+82            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+82-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:30:13-85
+83            android:enabled="true"
+83-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:31:13-35
+84            android:exported="false" >
+84-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:32:13-37
+85        </receiver>
+86
+87        <service
+87-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:35:9-38:40
+88            android:name="com.google.android.gms.measurement.AppMeasurementService"
+88-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:36:13-84
+89            android:enabled="true"
+89-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:37:13-35
+90            android:exported="false" />
+90-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:38:13-37
+91        <service
+91-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:39:9-43:72
+92            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+92-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:40:13-87
+93            android:enabled="true"
+93-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:41:13-35
+94            android:exported="false"
+94-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:42:13-37
+95            android:permission="android.permission.BIND_JOB_SERVICE" />
+95-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\3f37a4d1703b30e6712128a4d953fa9a\transformed\play-services-measurement-21.0.0\AndroidManifest.xml:43:13-69
+96
+97        <provider
+97-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:26:9-31:39
+98            android:name="com.google.firebase.provider.FirebaseInitProvider"
+98-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:27:13-77
+99            android:authorities="kr.co.witches.simplememo.firebaseinitprovider"
+99-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:28:13-72
+100            android:directBootAware="true"
+100-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:29:13-43
+101            android:exported="false"
+101-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:30:13-37
+102            android:initOrder="100" />
+102-->[com.google.firebase:firebase-common:20.1.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0a5a140d7fc2f4adc0b6e5ff55ce9b89\transformed\firebase-common-20.1.0\AndroidManifest.xml:31:13-36
+103
+104        <meta-data
+104-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\6311d1635c6608a9a329f0f980e26988\transformed\play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+105            android:name="com.google.android.gms.version"
+105-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\6311d1635c6608a9a329f0f980e26988\transformed\play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+106            android:value="@integer/google_play_services_version" />
+106-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\6311d1635c6608a9a329f0f980e26988\transformed\play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+107
+108        <provider
+108-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+109            android:name="androidx.startup.InitializationProvider"
+109-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+110            android:authorities="kr.co.witches.simplememo.androidx-startup"
+110-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+111            android:exported="false" >
+111-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+112            <meta-data
+112-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+113                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+113-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+114                android:value="androidx.startup" />
+114-->[androidx.emoji2:emoji2:1.0.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\17b410a229814e7c4ccae2ad0116ecb2\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+115            <meta-data
+115-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0e6fd474ca7c987e94928e5b3a095409\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+116                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+116-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0e6fd474ca7c987e94928e5b3a095409\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+117                android:value="androidx.startup" />
+117-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\0e6fd474ca7c987e94928e5b3a095409\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+118        </provider>
+119
+120        <service
+120-->[androidx.room:room-runtime:2.4.2] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\fab54edfc07a5673fc0ab054b747d0a1\transformed\room-runtime-2.4.2\AndroidManifest.xml:25:9-28:40
+121            android:name="androidx.room.MultiInstanceInvalidationService"
+121-->[androidx.room:room-runtime:2.4.2] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\fab54edfc07a5673fc0ab054b747d0a1\transformed\room-runtime-2.4.2\AndroidManifest.xml:26:13-74
+122            android:directBootAware="true"
+122-->[androidx.room:room-runtime:2.4.2] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\fab54edfc07a5673fc0ab054b747d0a1\transformed\room-runtime-2.4.2\AndroidManifest.xml:27:13-43
+123            android:exported="false" />
+123-->[androidx.room:room-runtime:2.4.2] C:\Users\juu12\AndroidStudioProjects\caches\transforms-3\fab54edfc07a5673fc0ab054b747d0a1\transformed\room-runtime-2.4.2\AndroidManifest.xml:28:13-37
+124    </application>
+125
+126</manifest>
