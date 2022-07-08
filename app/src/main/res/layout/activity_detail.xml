@@ -19,60 +19,38 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_main_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:fitsSystemWindows="true"
         tools:context=".ui.main.MainActivity">
 
-        <Button
-            android:id="@+id/btn_main_add_memo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:text="@string/str_add_memo"
-            app:layout_constraintBottom_toTopOf="@id/rv_main_memos"
-            app:layout_constraintDimensionRatio="6:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent="0.8" />
-
+        <!-- Todo : - RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_main_memos"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_main_add_memo"
-            app:layout_constraintVertical_weight="1"
-            tools:listitem="@layout/item_memo_image" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lav_favorite"
+        <!-- Todo : - 즐겨찾기 버튼으로 변경 On / Off -->
+        <!--android:onCheckedChanged="@{mainViewModel.favorite ? mainViewModel.getFavoriteData() : mainViewModel.getAllData()}"-->
+        <!--android:onCheckedChanged="@{() -> mainViewModel.setFavorite()}"-->
+        <CheckBox
+            android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:scaleType="fitXY"
-            android:translationZ="1dp"
+            android:checked="@{mainViewModel.isFavorite()}"
+            android:includeFontPadding="false"
+            android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1"
-            app:layout_constraintWidth_percent="0.5"
-            app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/ani_star" />
+            tools:ignore="UsingOnClickInXml" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

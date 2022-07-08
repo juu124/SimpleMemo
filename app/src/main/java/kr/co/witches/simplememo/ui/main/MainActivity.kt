@@ -2,19 +2,17 @@ package kr.co.witches.simplememo.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CompoundButton
-import android.widget.Toast
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import kr.co.witches.simplememo.AppApplication
 import kr.co.witches.simplememo.R
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModelFactory
 import kr.co.witches.simplememo.databinding.ActivityMainBinding
+import kr.co.witches.simplememo.util.OnSingleClickListener
 
 /**
  * MVVM 패턴 적용
@@ -29,43 +27,55 @@ class MainActivity : AppCompatActivity() {
         MemoViewModelFactory((application as AppApplication).repository)
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.lifecycleOwner = this
-        binding.mainActivity = this
-        binding.mainViewModel = mainViewModel
-        binding.memoViewModel = memoViewModel
+        binding.run {
+            lifecycleOwner = this@MainActivity
+            mainActivity = this@MainActivity
+            mainViewModel = this.mainViewModel
+            memoViewModel = this.memoViewModel
+        }
 
         addObservers()
 
         addListeners()
-        val btnAddMemo: Button = findViewById(R.id.btnAddMemo)
-        btnAddMemo.setOnClickListener{
-            val intent = Intent(this, AddMemo::class.java)
-            startActivity(intent)
-        }
+
+        //  Todo : - View Binding 으로 사용하기
+        //  Todo : - 공통 성격의 함수에서 처리 할 것
+//        val btnAddMemo: Button = findViewById(R.id.btn_main_add_memo)
+//        btnAddMemo.setOnClickListener{
+//            val intent = Intent(this, AddMemo::class.java)
+//            startActivity(intent)
+//        }
     }
 
     private fun addObservers() {
-        //  메인뷰모델의 메모 데이터가 변경된 경우
         memoViewModel.getAll().observe(this) { memos ->
-            println(">>> memos : ${memos.size}")
-            //  리사이클러뷰 갱신
-        }
-
-        binding.btnFavorite.setOnCheckedChangeListener { buttonView, isChecked ->
-            println(">>> setOnCheckedChangeListener : $isChecked")
-            mainViewModel.setFavorite(isChecked)
+            //  Todo : - RecyclerView Binding Adpdater 로 데이터 처리 할것
         }
     }
 
     private fun addListeners() {
+        //  메모 추가 버튼
+        binding.btnMainAddMemo.setOnClickListener(object : OnSingleClickListener() {
 
+            override fun onSingleClick(v: View?) {
+                val intent = Intent(this@MainActivity, AddMemo::class.java)
+                startActivity(intent)
+            }
+        })
+
+        //  즐겨찾기 애니메이션 처리
+        binding.lavFavorite.setOnClickListener(object : OnSingleClickListener() {
+
+            override fun onSingleClick(v: View?) {
+                runOnUiThread { binding.lavFavorite.playAnimation() }
+            }
+
+        })
     }
 
 }

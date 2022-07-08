@@ -12,6 +12,7 @@ import androidx.core.view.WindowCompat
 import kr.co.witches.simplememo.R
 
 class AddMemo : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
