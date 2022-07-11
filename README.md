@@ -55,4 +55,9 @@ dependencies {
 => 2-1. 데이터 처리  
 => 2-2. UI 처리   
 => 3. 테스트  
+
+
+
+### 참고 
+https://kotlinlang.org/docs/scope-functions.html
   
