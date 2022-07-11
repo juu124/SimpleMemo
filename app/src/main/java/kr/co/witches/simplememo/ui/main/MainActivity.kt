@@ -32,11 +32,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        //  Todo : run, let, also, apply, with
+        //  Todo : optional(?)
         binding.run {
             lifecycleOwner = this@MainActivity
-            mainActivity = this@MainActivity
-            mainViewModel = this.mainViewModel
-            memoViewModel = this.memoViewModel
+        }
+
+        //  Todo : let
+        binding.let {
+            it.mainActivity = this
+        }
+        //  Todo : also
+        binding.also {
+            it.mainViewModel = mainViewModel
+        }
+
+        //  Todo : apply
+        binding.apply {
+            this.memoViewModel = memoViewModel
+        }
+
+        //  Todo: with
+        with(binding) {
+
         }
 
         addObservers()
