@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.Flow
 interface MemoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMemo(stepCount: MemoVO)
+    suspend fun insertMemo(memo: MemoVO)
 
     @Delete
-    suspend fun deleteMemo(stepCount: MemoVO)
+    suspend fun deleteMemo(memo: MemoVO)
 
     @Query("SELECT * FROM tb_memo ORDER BY id;")
     fun getAll(): Flow<List<MemoVO>>

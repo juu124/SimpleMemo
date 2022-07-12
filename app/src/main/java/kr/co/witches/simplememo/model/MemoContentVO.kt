@@ -1,5 +1,9 @@
 package kr.co.witches.simplememo.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class MemoContentVO(
     /**
      * 메모 컨텐츠 유형
@@ -15,4 +19,4 @@ data class MemoContentVO(
      * M : {kr.co.witches.simplememo.model.MemoLocationVO}
      */
     , val content: String
-)
+): Parcelable

@@ -13,7 +13,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "tb_memo")
 data class MemoVO(
     @PrimaryKey(autoGenerate = true) var id: Long?,
-    @ColumnInfo(name = "memo") var memo: ArrayList<MemoVO>,
+    @ColumnInfo(name = "memo") var memo: ArrayList<MemoContentVO>,
     @ColumnInfo(name = "regDate") val regDate: Long,
     @ColumnInfo(name = "modDate") val modDate: Long,
     @ColumnInfo(name = "delDate") val delDate: Long,
