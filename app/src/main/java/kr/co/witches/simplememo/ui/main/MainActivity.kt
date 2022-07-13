@@ -13,6 +13,7 @@ import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModelFactory
 import kr.co.witches.simplememo.databinding.ActivityMainBinding
 import kr.co.witches.simplememo.ui.write.WriteActivity
+import java.util.jar.Manifest
 
 /**
  * MVVM 패턴 적용
@@ -39,11 +40,15 @@ class MainActivity : AppCompatActivity() {
         addObservers()
 
         addListeners()
+
+        //메모추가 버튼
         val btnAddMemo: Button = findViewById(R.id.btn_main_add_memo)
         btnAddMemo.setOnClickListener{
             val intent = Intent(this, WriteActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
     private fun addObservers() {
