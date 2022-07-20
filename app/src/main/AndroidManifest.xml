@@ -19,9 +19,6 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/external"/>
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBHLoMD0PiVAQDFIcUCK45o7E0qX13u8kY"/>
         </provider>
 
         <activity
@@ -40,6 +37,9 @@
         <activity
             android:name=".ui.write.WriteActivity"
             android:windowSoftInputMode="adjustPan"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBHLoMD0PiVAQDFIcUCK45o7E0qX13u8kY"/>
     </application>
 
     <uses-permission android:name="android.permission.CAMERA" />

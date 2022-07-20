@@ -17,8 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kr.co.witches.simplememo.R
@@ -27,12 +26,10 @@ import kr.co.witches.simplememo.model.MemoContentType
 import kr.co.witches.simplememo.model.MemoContentVO
 import kr.co.witches.simplememo.model.MemoVO
 
-
 class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityWriteBinding
-    private var REQUEST_IMAGE_CODE: Int = 101
-
+    // private var REQUEST_IMAGE_CODE: Int = 101
 
     // 갤러리 이동 launcher 선언
     val launcher = registerForActivityResult(
@@ -104,7 +101,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_write)
+        binding = DataBindingUtil.setContentView(this@WriteActivity, R.layout.activity_write)
 
         //내용 입력
         val etContent = binding.etContent
@@ -115,6 +112,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             AlertDialog.Builder(this)
                 .setTitle("이미지 업로드")
                 .setMessage("업로드할 이미지 선택")
+
                 // 카메라
                 .setPositiveButton("카메라", object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, which: Int) {
@@ -165,6 +163,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                         }*/
                     }
                 })
+
                 // 갤러리 이동
                 .setNegativeButton("갤러리", object : DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, which: Int) {
@@ -177,6 +176,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                                 Manifest.permission.READ_EXTERNAL_STORAGE
                             )
                             if (writePermission == PackageManager.PERMISSION_DENIED || readPermission == PackageManager.PERMISSION_DENIED) {
+
                                 // 권한이 없는 경우
                                 Log.d("test", "갤러리 권한 없음")
                                 ActivityCompat.requestPermissions(
@@ -207,14 +207,9 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
         // todo :: 지도
-        /* val mapFragment1: SupportMapFragment =
-             supportFragmentManager.findFragmentById(R.id.f_map) as SupportMapFragment
-         mapFragment1.getMapAsync(this)
-         val mapFragment = SupportMapFragment.newInstance()
-         supportFragmentManager
-             .beginTransaction()
-             .add(R.id.f_map, mapFragment)
-             .commit()*/
+        val mapFragment = supportFragmentManager
+            .findFragmentById(kr.co.witches.simplememo.R.id.f_map) as SupportMapFragment?
+        mapFragment!!.getMapAsync(this)
 
 
         // todo :: 메모 추가
@@ -223,7 +218,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             if (etContent.text.isNotBlank()) {
                 val content = ArrayList<MemoContentVO>()
                 val text = MemoContentVO(MemoContentType.text, etContent.text.toString())
-
                 content.add(text)
                 val memo = MemoVO(null, content, System.currentTimeMillis(), 0, 0, 0)
             }
@@ -255,7 +249,18 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 .position(LatLng(37.56, 126.97))
                 .title("Marker")
         )
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(37.56, 126.97)))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(37.56, 126.97), 10F))
     }
+
+    /*override fun onMapReady(googleMap: GoogleMap) {
+        TODO("Not yet implemented")
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(37.56, 126.97))
+                .title("Marker")
+        )
+    }*/
     /*var mMap = googleMap
     val SEOUL = LatLng(37.56, 126.97)
 
