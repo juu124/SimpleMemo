@@ -1,9 +1,7 @@
 package kr.co.witches.simplememo.data.database.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import kr.co.witches.simplememo.data.database.repository.MemoRepository
 import kr.co.witches.simplememo.model.MemoVO

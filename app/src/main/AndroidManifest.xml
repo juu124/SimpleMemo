@@ -40,6 +40,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBHLoMD0PiVAQDFIcUCK45o7E0qX13u8kY"/>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
     </application>
 
     <uses-permission android:name="android.permission.CAMERA" />

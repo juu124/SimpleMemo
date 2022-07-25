@@ -31,7 +31,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="24dp">
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="5dp">
 
             <EditText
                 android:id="@+id/et_content"
@@ -40,6 +41,7 @@
                 android:background="@null"
                 android:gravity="left"
                 android:hint="내용을 입력하세요."
+                android:maxHeight="300dp"
                 android:minHeight="300dp"
                 android:padding="16dp"
                 android:textSize="21dp"
@@ -72,6 +74,7 @@
                     android:id="@+id/btn_add_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="이미지업로드" />
 
                 <ImageView
@@ -93,18 +96,15 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ll_img" />
 
-            <androidx.fragment.app.FragmentContainerView
+            <fragment
                 android:id="@+id/f_map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
                 android:layout_marginTop="16dp"
-                android:paddingTop="100dp"
-                android:paddingBottom="100dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view2"
-                tools:context= ".MapsActivity"/>
+                app:layout_constraintTop_toBottomOf="@id/view2" />
 
             <View
                 android:id="@+id/view3"
