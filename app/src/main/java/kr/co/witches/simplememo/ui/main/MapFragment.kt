@@ -1,11 +1,17 @@
 package kr.co.witches.simplememo.ui.main
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.content.ContextCompat
+import androidx.core.location.LocationManagerCompat.getCurrentLocation
+import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -14,6 +20,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kr.co.witches.simplememo.R
 import kr.co.witches.simplememo.ui.write.WriteActivity
+import java.util.jar.Manifest
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +39,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var mContext: Context
+    lateinit var btnLocation: Button
+    lateinit var client: FusedLocationProviderClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -49,8 +59,39 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         var rootView = inflater.inflate(R.layout.fragment_map, container, false)
         mView = rootView.findViewById(R.id.mapView)
+        btnLocation = rootView.findViewById(R.id.btn_location)
         mView.onCreate(savedInstanceState)
         mView.getMapAsync(this)
+
+        client = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        btnLocation.setOnClickListener(View.OnClickListener {
+            if (ContextCompat.checkSelfPermission(
+                    requireActivity(),
+                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                )
+                == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(
+                    requireActivity(),
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+                == PackageManager.PERMISSION_GRANTED
+            ) {
+                //위치 권한이 있으면
+                getCurrentLocation()
+            } else {
+                // When permission is not granted
+                // Call method
+                requestPermissions(
+                    arrayOf(
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ),
+                    100
+                )
+            }
+        })
+
         return rootView
     }
 
