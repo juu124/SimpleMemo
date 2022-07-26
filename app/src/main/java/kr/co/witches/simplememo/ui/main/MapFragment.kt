@@ -59,13 +59,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         var rootView = inflater.inflate(R.layout.fragment_map, container, false)
         mView = rootView.findViewById(R.id.mapView)
-        btnLocation = rootView.findViewById(R.id.btn_location)
+        //btnLocation = rootView.findViewById(R.id.btn_location)
         mView.onCreate(savedInstanceState)
         mView.getMapAsync(this)
 
         client = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        btnLocation.setOnClickListener(View.OnClickListener {
+        /*btnLocation.setOnClickListener(View.OnClickListener {
             if (ContextCompat.checkSelfPermission(
                     requireActivity(),
                     android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -90,8 +90,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     100
                 )
             }
-        })
-
+        })*/
         return rootView
     }
 
