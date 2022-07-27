@@ -30,7 +30,7 @@ import kr.co.witches.simplememo.model.MemoContentVO
 import kr.co.witches.simplememo.model.MemoVO
 import kr.co.witches.simplememo.ui.main.MapFragment
 
-class WriteActivity : AppCompatActivity()/*, OnMapReadyCallback */ {
+class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityWriteBinding
     lateinit var memoViewModel: MemoViewModel
@@ -192,11 +192,18 @@ class WriteActivity : AppCompatActivity()/*, OnMapReadyCallback */ {
         })
 
         // todo :: 지도
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        val fragment = MapFragment()
-        fragmentTransaction.add(R.id.f_map, fragment)
-        fragmentTransaction.commit()
+        /*val mapFragment = SupportMapFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.f_map, mapFragment)
+            .commit()
+        mapFragment.getMapAsync(this)*/
+
+         val fragmentManager = supportFragmentManager
+         val fragmentTransaction = fragmentManager.beginTransaction()
+         val fragment = MapFragment()
+         fragmentTransaction.add(R.id.f_map, fragment)
+         fragmentTransaction.commit()
 
         /*    val mapFragment = supportFragmentManager
             .findFragmentById(kr.co.witches.simplememo.R.id.f_map) as SupportMapFragment?
@@ -237,6 +244,14 @@ class WriteActivity : AppCompatActivity()/*, OnMapReadyCallback */ {
                 .create()
                 .show()
         })
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(0.0, 0.0))
+                .title("마커!")
+        )
     }
 }
 

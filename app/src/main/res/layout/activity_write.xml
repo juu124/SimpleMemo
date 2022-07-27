@@ -139,11 +139,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="작성취소" />
-                <Button
-                    android:id="@+id/btn_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="현재위치버튼"/>
 
             </LinearLayout>
 
