@@ -70,6 +70,7 @@ dependencies {
 
     //  For Kotlin use kapt instead of annotationProcessor
     kapt 'androidx.room:room-compiler:2.4.2'
+    
 //    kapt 'android.arch.persistence.room:compiler:2.2.5'
 
     // optional - Kotlin Extensions and Coroutines support for Room

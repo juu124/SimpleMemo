@@ -42,13 +42,10 @@ class MainActivity : AppCompatActivity() {
         addListeners()
 
         //메모추가 버튼
-        val btnAddMemo: Button = findViewById(R.id.btn_main_add_memo)
-        btnAddMemo.setOnClickListener{
+        binding.btnMainAddMemo.setOnClickListener{
             val intent = Intent(this, WriteActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
     private fun addObservers() {

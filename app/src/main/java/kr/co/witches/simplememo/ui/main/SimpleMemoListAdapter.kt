@@ -32,7 +32,7 @@ class SimpleMemoListAdapter : RecyclerView.Adapter<SimpleMemoListAdapter.ViewHol
 //        }
     }
 
-    fun simpleTextadapter(list: ArrayList<String>){
+    fun SimpleMemoListAdapter(list: ArrayList<String>){
         var mData = list
     }
 

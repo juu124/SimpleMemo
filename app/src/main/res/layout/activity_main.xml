@@ -8,14 +8,17 @@
         <variable
             name="mainActivity"
             type="kr.co.witches.simplememo.ui.main.MainActivity" />
+        <import type="kr.co.witches.simplememo.ui.main.MainActivity" />
 
         <variable
             name="mainViewModel"
             type="kr.co.witches.simplememo.ui.main.MainViewModel" />
+        <import type="kr.co.witches.simplememo.ui.main.MainViewModel" />
 
         <variable
             name="memoViewModel"
             type="kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel" />
+        <import type="kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel" />
     </data>
 
         <androidx.constraintlayout.widget.ConstraintLayout
