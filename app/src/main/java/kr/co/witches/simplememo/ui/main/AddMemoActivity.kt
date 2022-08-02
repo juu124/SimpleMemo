@@ -14,7 +14,7 @@ import kr.co.witches.simplememo.model.MemoContentType
 import kr.co.witches.simplememo.model.MemoContentVO
 import kr.co.witches.simplememo.model.MemoVO
 
-class AddMemoActivity{}/* : AppCompatActivity() {
+class AddMemoActivity{} /*: AppCompatActivity() {
 
 //    private lateinit var binding: Activ
 

@@ -156,8 +156,7 @@ class MapFragment : Fragment(),
                 val latitude = location.latitude
                 val altitude = location.altitude
                 Log.d("Location", "Latitude : $latitude, Longitude : $longitude, altitude: $altitude")
-                Toast.makeText(context, "내 위치 권한 있음\n Latitude : $latitude\n Longitude : $longitude\n altitude: $altitude", Toast.LENGTH_SHORT)
-                    .show()
+
             }
 
             override fun onProviderEnabled(provider: String) {

@@ -191,24 +191,12 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
         })
 
-        // todo :: 지도
-        /*val mapFragment = SupportMapFragment.newInstance()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.f_map, mapFragment)
-            .commit()
-        mapFragment.getMapAsync(this)*/
-
+        // 지도
          val fragmentManager = supportFragmentManager
          val fragmentTransaction = fragmentManager.beginTransaction()
          val fragment = MapFragment()
          fragmentTransaction.add(R.id.f_map, fragment)
          fragmentTransaction.commit()
-
-        /*    val mapFragment = supportFragmentManager
-            .findFragmentById(kr.co.witches.simplememo.R.id.f_map) as SupportMapFragment?
-            mapFragment!!.getMapAsync(this)*/
-
 
         // todo :: 메모 추가
         binding.btnAddMemoCheck.setOnClickListener(View.OnClickListener {
@@ -254,7 +242,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 }
-
 
 //카메라 및 갤러리 접근을 위한 접근 확인
 /*private fun checkPermission() {
