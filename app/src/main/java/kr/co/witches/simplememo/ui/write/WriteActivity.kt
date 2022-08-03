@@ -12,9 +12,12 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.ImageCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -37,21 +40,38 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityWriteBinding
     lateinit var memoViewModel: MemoViewModel
+    lateinit var bitmap: Bitmap
     val REQUEST_IMAGE_CAPTURE = 1
-    // var permissionCheckCamera1 = -1
 
     // 갤러리 이동 launcher 선언
-    val launcher = registerForActivityResult(
+    val galleryActivityResult = registerForActivityResult(
         StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             Log.d("test", "사진 선택 완료")
             val intent = result.data
             val uri: Uri? = intent!!.data
-            binding.ivImage.setImageURI(uri);
+            binding.ivImage.setImageURI(uri)
             Glide.with(this@WriteActivity)
                 .load(uri)
                 .into(binding.ivImage)
+        }
+    }
+
+    // 카메라로 이동
+    val cameraActivityResult = registerForActivityResult(
+        StartActivityForResult()
+    ) {
+        if (it.resultCode == RESULT_OK && it.data != null) {
+            // 값 담기
+            val extras = it.data!!.extras
+            // bitmap으로 타입 변경
+            bitmap = extras?.get("data") as Bitmap
+            // 화면에 보여주기
+            binding.ivImage.setImageBitmap(bitmap)
+            Log.d("TAG", "camera capture success")
+        } else {
+            Log.d("TAG", "camera capture false")
         }
     }
 
@@ -69,21 +89,27 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    // 카메라 권한 확인 T/F
-    private fun checkPermissionCamera() {
+    // 카메라 권한 확인 및 실행
+    private fun checkPermissionCameraCapture() {
         Log.d(
             "TAG",
-            "checkPermissionCamera"
+            "checkPermissionCameraCapture"
         )
         val permissionCheckCamera =
-            ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+            ContextCompat.checkSelfPermission(this@WriteActivity, Manifest.permission.CAMERA)
         val permissionCheckReadStorage =
-            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            ContextCompat.checkSelfPermission(
+                this@WriteActivity,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
         val permissionCheckWriteStorage =
-            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            ContextCompat.checkSelfPermission(
+                this@WriteActivity,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
 
-        if (/*(permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
-            && */(permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
+        if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
+            && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
             && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
         ) {
             // 권한 없음
@@ -102,53 +128,11 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 "TAG",
                 "success camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
             )
-            // 카메라 실행 하는 함수로 연결
-            val REQUEST_IMAGE_CAPTURE = 1
-            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-                takePictureIntent.resolveActivity(packageManager)?.also {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                }
-            }
+            // 카메라 실행
+            Log.d("TAG", "imagecCapture?")
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            cameraActivityResult.launch(intent)
         }
-        /*
-        if (permissionCheckCamera1 == 0 && permissionCheckStorage1 == 0 && permissionCheckStorage2 == 0) {
-            // 카메라 실행 하는 함수로 연결
-            Log.d(
-                "TAG",
-                "camera , readStorage, writeStorage >>> " + permissionCheckCamera1 + permissionCheckStorage1 + permissionCheckStorage2
-            )
-            dispatchTakePictureIntent()
-        }*/ /*else {
-            // 거부된 권한 확인 , 요청
-            Log.d(
-                "TAG",
-                "camera , readStorage, writeStorage >>> " + permissionCheckCamera1 + permissionCheckStorage1 + permissionCheckStorage2
-            )
-            return false
-        }*/
-        // Log.d("TAG", "checkPermissionCamera")
-        // Log.d("TAG", "camera , readStorage, writeStorage >>> " + permissionCheckCamera1 + permissionCheckStorage1 + permissionCheckStorage2)
-        //return (permissionCheckCamera1
-        //        == PackageManager.PERMISSION_GRANTED)
-        /*&& permissionCheckCamera2
-        == PackageManager.PERMISSION_GRANTED)*/
-    }
-
-    // 카메라 실행
-    private fun dispatchTakePictureIntent() {
-        Log.d("TAG", "dispatchTakePictureIntent")
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }
-
-        /*val REQUEST_IMAGE_CAPTURE = 1
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }*/
     }
 
     @Override
@@ -166,7 +150,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
-
 
     // 갤러리 권한 확인 T/F
     private fun checkPermissionGallery(): Boolean {
@@ -199,7 +182,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         intent.setType("image/*")
         intent.setAction(Intent.ACTION_GET_CONTENT)
         Log.d("test", "갤러리로 이동")
-        launcher.launch(intent)
+        galleryActivityResult.launch(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -219,18 +202,9 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 .setPositiveButton("카메라", object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, which: Int) {
                         Toast.makeText(applicationContext, "카메라로 이동", Toast.LENGTH_SHORT).show()
-                        // 카메라 접근을 위한 접근 확인
+                        // 카메라 접근을 위한 접근 확인 및 실행
                         // 코틀린 boolean은 true:0, false:-1
-                        checkPermissionCamera()
-                        /*if (checkPermissionCamera()) {
-                            Log.d("TAG", "checkPermissionCamera result = 1")
-                            // 권한 있는 경우
-                            dispatchTakePictureIntent()
-                        } else {
-                            // 권한 없는 경우
-                            Log.d("TAG", "checkPermissionCamera result = 0")
-                            requestPermission()
-                        }*/
+                        checkPermissionCameraCapture()
                     }
                 })
                 // 갤러리 이동
@@ -300,20 +274,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // 카메라 촬영을 하면 이미지뷰에 사진 삽입
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            // Bitmap으로 컨버전
-            Log.d("TAG", "onActivityResult success!!!")
-            val imageBitmap: Bitmap = data?.extras?.get("data") as Bitmap
-            // 이미지뷰에 Bitmap으로 이미지를 입력
-            binding.ivImage.setImageBitmap(imageBitmap)
-        } else {
-            Log.d("TAG", "onActivityResult fail!!!")
-        }
-    }
-
     override fun onMapReady(googleMap: GoogleMap) {
         googleMap.addMarker(
             MarkerOptions()
@@ -322,16 +282,3 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 }
-
-
-//카메라 및 갤러리 접근을 위한 접근 확인
-/*private fun checkPermission() {
-    val cameraPermission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
-    if(cameraPermission == PackageManager.PERMISSION_GRANTED){
-        requestPermission()
-    }
-}
-
-private fun requestPermission() {
-    ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 99)
-}*/
