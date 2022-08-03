@@ -1,7 +1,6 @@
 package kr.co.witches.simplememo.ui.write
 
 import android.Manifest
-import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,49 +11,45 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.ImageCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kr.co.witches.simplememo.R
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel
-import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModelFactory
 import kr.co.witches.simplememo.databinding.ActivityWriteBinding
 import kr.co.witches.simplememo.model.MemoContentType
 import kr.co.witches.simplememo.model.MemoContentVO
 import kr.co.witches.simplememo.model.MemoVO
 import kr.co.witches.simplememo.ui.main.MapFragment
-import java.io.File
 
 class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityWriteBinding
     lateinit var memoViewModel: MemoViewModel
     lateinit var bitmap: Bitmap
-    val REQUEST_IMAGE_CAPTURE = 1
 
     // 갤러리 이동 launcher 선언
     val galleryActivityResult = registerForActivityResult(
         StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
-            Log.d("test", "사진 선택 완료")
             val intent = result.data
             val uri: Uri? = intent!!.data
             binding.ivImage.setImageURI(uri)
             Glide.with(this@WriteActivity)
                 .load(uri)
                 .into(binding.ivImage)
+            Log.d("TAG", "import image success")
+        } else {
+            Log.d("TAG", "import image false")
         }
     }
 
@@ -75,22 +70,8 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    // 카메라 권한 요청
-    private fun requestPermission() {
-        val cameraPermissionCheck = ContextCompat.checkSelfPermission(
-            this@WriteActivity,
-            Manifest.permission.CAMERA
-        )
-        if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED) {
-            Log.d("test", "카메라 권한 없음")
-            ActivityCompat.requestPermissions(
-                this@WriteActivity, arrayOf(Manifest.permission.CAMERA), 1000
-            )
-        }
-    }
-
     // 카메라 권한 확인 및 실행
-    private fun checkPermissionCameraCapture() {
+    private fun checkPermissionCamera(): Boolean {
         Log.d(
             "TAG",
             "checkPermissionCameraCapture"
@@ -107,8 +88,23 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 this@WriteActivity,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
-
         if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
+            && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
+            && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
+        ) {
+            Log.d(
+                "TAG",
+                "permission fail camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
+            )
+            return true
+        } else {
+            Log.d(
+                "TAG",
+                "permission success camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
+            )
+            return false
+        }
+        /*if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
             && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
             && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
         ) {
@@ -132,10 +128,10 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             Log.d("TAG", "imagecCapture?")
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             cameraActivityResult.launch(intent)
-        }
+        }*/
     }
 
-    @Override
+/*    @Override
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -149,7 +145,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 finish()
             }
         }
-    }
+    }*/
 
     // 갤러리 권한 확인 T/F
     private fun checkPermissionGallery(): Boolean {
@@ -164,9 +160,28 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         return (writePermission != PackageManager.PERMISSION_DENIED || readPermission != PackageManager.PERMISSION_DENIED)
     }
 
+    // 카메라 권한 없는 경우
+    private fun requestPermissionCamera() {
+        Log.d("TAG", "requestPermissionCamera")
+        ActivityCompat.requestPermissions(
+            this@WriteActivity, arrayOf(
+                android.Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ), 1000
+        )
+    }
+
+    // 카메라 권한 있는 경우(카메라 실행)
+    private fun takePictureIntent() {
+        Log.d("TAG", "takePictureIntent")
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        cameraActivityResult.launch(intent)
+    }
+
     // 갤러리 권한 없는 경우
     private fun requestPermissionGallery() {
-        Log.d("test", "갤러리 권한 없음")
+        Log.d("TAG", "requestPermissionGallery")
         ActivityCompat.requestPermissions(
             this@WriteActivity, arrayOf(
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -176,12 +191,11 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     // 갤러리 권한 있는 경우
-    private fun TakePictureIntent() {
-        Log.d("test", "갤러리 권한 있음")
+    private fun importImageIntent() {
+        Log.d("TAG", "importImageIntent")
         val intent: Intent = Intent()
         intent.setType("image/*")
         intent.setAction(Intent.ACTION_GET_CONTENT)
-        Log.d("test", "갤러리로 이동")
         galleryActivityResult.launch(intent)
     }
 
@@ -193,7 +207,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         val etContent = binding.etContent
         //etContent.requestFocus()
 
-        // todo :: 이미지
+        // 이미지
         binding.btnAddImg.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("이미지 업로드")
@@ -203,8 +217,14 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                     override fun onClick(dialog: DialogInterface, which: Int) {
                         Toast.makeText(applicationContext, "카메라로 이동", Toast.LENGTH_SHORT).show()
                         // 카메라 접근을 위한 접근 확인 및 실행
-                        // 코틀린 boolean은 true:0, false:-1
-                        checkPermissionCameraCapture()
+                        if (checkPermissionCamera()) {
+                            // 권한 없는 경우
+                            requestPermissionCamera()
+                        } else {
+                            // 권한 있는 경우
+                            takePictureIntent()
+
+                        }
                     }
                 })
                 // 갤러리 이동
@@ -212,10 +232,10 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                     override fun onClick(dialog: DialogInterface, which: Int) {
                         //  갤러리 접근을 위한 접근 확인
                         if (checkPermissionGallery()) {
-                            // 권한 있는 경우
-                            TakePictureIntent()
+                            // 권한 있는 경우(이미지 가져오기)
+                            importImageIntent()
                         } else {
-                            // 권한 없는 경우
+                            // 권한 없는 경우(권한 재 요청)
                             requestPermissionGallery()
                         }
                     }
