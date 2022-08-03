@@ -1,9 +1,11 @@
 package kr.co.witches.simplememo.ui.write
 
 import android.Manifest
+import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -29,11 +31,14 @@ import kr.co.witches.simplememo.model.MemoContentType
 import kr.co.witches.simplememo.model.MemoContentVO
 import kr.co.witches.simplememo.model.MemoVO
 import kr.co.witches.simplememo.ui.main.MapFragment
+import java.io.File
 
 class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityWriteBinding
     lateinit var memoViewModel: MemoViewModel
+    val REQUEST_IMAGE_CAPTURE = 1
+    // var permissionCheckCamera1 = -1
 
     // 갤러리 이동 launcher 선언
     val launcher = registerForActivityResult(
@@ -65,26 +70,85 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     // 카메라 권한 확인 T/F
-    private fun checkPermissionCamera(): Boolean {
-        return (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED)
+    private fun checkPermissionCamera() {
+        Log.d(
+            "TAG",
+            "checkPermissionCamera"
+        )
+        val permissionCheckCamera =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        val permissionCheckReadStorage =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        val permissionCheckWriteStorage =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        if (/*(permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
+            && */(permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
+            && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
+        ) {
+            // 권한 없음
+            Log.d(
+                "TAG",
+                "camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
+            )
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.CAMERA),
+                1000
+            )
+        } else {
+            // 권한 허용
+            Log.d(
+                "TAG",
+                "success camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
+            )
+            // 카메라 실행 하는 함수로 연결
+            val REQUEST_IMAGE_CAPTURE = 1
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                takePictureIntent.resolveActivity(packageManager)?.also {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                }
+            }
+        }
+        /*
+        if (permissionCheckCamera1 == 0 && permissionCheckStorage1 == 0 && permissionCheckStorage2 == 0) {
+            // 카메라 실행 하는 함수로 연결
+            Log.d(
+                "TAG",
+                "camera , readStorage, writeStorage >>> " + permissionCheckCamera1 + permissionCheckStorage1 + permissionCheckStorage2
+            )
+            dispatchTakePictureIntent()
+        }*/ /*else {
+            // 거부된 권한 확인 , 요청
+            Log.d(
+                "TAG",
+                "camera , readStorage, writeStorage >>> " + permissionCheckCamera1 + permissionCheckStorage1 + permissionCheckStorage2
+            )
+            return false
+        }*/
+        // Log.d("TAG", "checkPermissionCamera")
+        // Log.d("TAG", "camera , readStorage, writeStorage >>> " + permissionCheckCamera1 + permissionCheckStorage1 + permissionCheckStorage2)
+        //return (permissionCheckCamera1
+        //        == PackageManager.PERMISSION_GRANTED)
+        /*&& permissionCheckCamera2
+        == PackageManager.PERMISSION_GRANTED)*/
     }
 
     // 카메라 실행
     private fun dispatchTakePictureIntent() {
+        Log.d("TAG", "dispatchTakePictureIntent")
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(packageManager)?.also {
-                //startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                val intent: Intent = Intent()
-                intent.setType("image/*")
-                intent.setAction(Intent.ACTION_GET_CONTENT)
-                launcher.launch(intent)
-                Log.d("test", "카메라")
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
             }
         }
+
+        /*val REQUEST_IMAGE_CAPTURE = 1
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }*/
     }
 
     @Override
@@ -94,14 +158,15 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 1000) {
-            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                //거부
-                Toast.makeText(this@WriteActivity, "거부", Toast.LENGTH_SHORT)
-                    .show()
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            var count = grantResults.count { it == PackageManager.PERMISSION_DENIED }
+            if (count != 0) {
+                Toast.makeText(applicationContext, "권한을 동의해주세요.", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
     }
+
 
     // 갤러리 권한 확인 T/F
     private fun checkPermissionGallery(): Boolean {
@@ -137,36 +202,37 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         launcher.launch(intent)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@WriteActivity, R.layout.activity_write)
 
         // 내용 입력
         val etContent = binding.etContent
-        etContent.requestFocus()
+        //etContent.requestFocus()
 
         // todo :: 이미지
         binding.btnAddImg.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("이미지 업로드")
                 .setMessage("업로드할 이미지 선택")
-
                 // 카메라
                 .setPositiveButton("카메라", object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, which: Int) {
                         Toast.makeText(applicationContext, "카메라로 이동", Toast.LENGTH_SHORT).show()
                         // 카메라 접근을 위한 접근 확인
-                        if (checkPermissionCamera()) {
+                        // 코틀린 boolean은 true:0, false:-1
+                        checkPermissionCamera()
+                        /*if (checkPermissionCamera()) {
+                            Log.d("TAG", "checkPermissionCamera result = 1")
                             // 권한 있는 경우
                             dispatchTakePictureIntent()
                         } else {
                             // 권한 없는 경우
+                            Log.d("TAG", "checkPermissionCamera result = 0")
                             requestPermission()
-                        }
+                        }*/
                     }
                 })
-
                 // 갤러리 이동
                 .setNegativeButton("갤러리", object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, which: Int) {
@@ -188,15 +254,14 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                     })
                 .create()
                 .show()
-
         })
 
         // 지도
-         val fragmentManager = supportFragmentManager
-         val fragmentTransaction = fragmentManager.beginTransaction()
-         val fragment = MapFragment()
-         fragmentTransaction.add(R.id.f_map, fragment)
-         fragmentTransaction.commit()
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = MapFragment()
+        fragmentTransaction.add(R.id.f_map, fragment)
+        fragmentTransaction.commit()
 
         // todo :: 메모 추가
         binding.btnAddMemoCheck.setOnClickListener(View.OnClickListener {
@@ -211,7 +276,8 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 Toast.makeText(this, "메모추가버튼2", Toast.LENGTH_SHORT).show()
 
             } else {
-                Toast.makeText(this, "데이터를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "메모를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                etContent.requestFocus()
             }
         })
 
@@ -234,6 +300,20 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        // 카메라 촬영을 하면 이미지뷰에 사진 삽입
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            // Bitmap으로 컨버전
+            Log.d("TAG", "onActivityResult success!!!")
+            val imageBitmap: Bitmap = data?.extras?.get("data") as Bitmap
+            // 이미지뷰에 Bitmap으로 이미지를 입력
+            binding.ivImage.setImageBitmap(imageBitmap)
+        } else {
+            Log.d("TAG", "onActivityResult fail!!!")
+        }
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         googleMap.addMarker(
             MarkerOptions()
@@ -242,6 +322,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 }
+
 
 //카메라 및 갤러리 접근을 위한 접근 확인
 /*private fun checkPermission() {
