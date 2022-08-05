@@ -11,7 +11,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url "https://oss.jfrog.org/libs-snapshot" }
+        maven { url 'https://naver.jfrog.io/artifactory/maven/' }
     }
 }
 rootProject.name = "SimpleMemo"
 include ':app'
+include ':Application'
