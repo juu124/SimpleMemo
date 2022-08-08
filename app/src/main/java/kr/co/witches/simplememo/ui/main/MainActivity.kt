@@ -2,7 +2,6 @@ package kr.co.witches.simplememo.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -13,15 +12,15 @@ import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModelFactory
 import kr.co.witches.simplememo.databinding.ActivityMainBinding
 import kr.co.witches.simplememo.ui.write.WriteActivity
-import java.util.jar.Manifest
 
 /**
  * MVVM 패턴 적용
  *  -> 액티비티에서 처리 : 뷰
  */
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
+    lateinit var simpleMemoListAdapter: SimpleMemoListAdapter
+    val datas = mutableListOf<RecyclerItem>()
 
     private val mainViewModel: MainViewModel by viewModels()
     private val memoViewModel: MemoViewModel by viewModels {
@@ -42,10 +41,26 @@ class MainActivity : AppCompatActivity() {
         addListeners()
 
         //메모추가 버튼
-        binding.btnMainAddMemo.setOnClickListener{
+        binding.btnMainAddMemo.setOnClickListener {
             val intent = Intent(this, WriteActivity::class.java)
             startActivity(intent)
         }
+
+        // 목록을 눌렀을 때
+        binding.rvMainMemos.setOnClickListener {
+           //val intent = Intent(this,  )
+        }
+    }
+
+    private fun initRecycler() {
+        simpleMemoListAdapter = SimpleMemoListAdapter(this)
+        binding.rvMainMemos.adapter = simpleMemoListAdapter
+        datas.apply{
+            //add()
+        }
+        //datas.add(RecyclerItem().setContent("hi"))
+        simpleMemoListAdapter.datas = datas
+        simpleMemoListAdapter.notifyDataSetChanged()
     }
 
     private fun addObservers() {

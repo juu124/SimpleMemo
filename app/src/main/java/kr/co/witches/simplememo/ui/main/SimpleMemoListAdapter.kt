@@ -4,57 +4,41 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kr.co.witches.simplememo.R
 
-class SimpleMemoListAdapter : RecyclerView.Adapter<SimpleMemoListAdapter.ViewHolder>() {
+class SimpleMemoListAdapter(private val context: Context) : RecyclerView.Adapter<SimpleMemoListAdapter.ViewHolder>() {
 
-    var mData: ArrayList<String>? = null
+    var datas = mutableListOf<RecyclerItem>()
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        //private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
-
-        //lateinit var textTitle: TextView
-
-        val textView: TextView
-
-        init {
-            textView = itemView.findViewById(R.id.tvTitle)
-        }
-
-
-//        fun ViewHolder(itemView: ActionMenuItemView){
-//            super.itemView
-//            textTitle = itemView.findViewById(R.id.tvTitle)
-//        }
-    }
-
-    fun SimpleMemoListAdapter(list: ArrayList<String>){
-        var mData = list
-    }
-
+    // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val context: Context = parent.context
-        val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater: LayoutInflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = inflater.inflate(R.layout.recyclerview_item, parent, false)
-        val vh: ViewHolder = ViewHolder(view)
-
+        val vh = ViewHolder(view)
         return vh
     }
 
-    override fun onBindViewHolder(holder: SimpleMemoListAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
-        val text: String = mData?.get(position).toString()
-        holder.textView.setText(text.toInt())
+    // 전체 아이템 갯수 리턴
+    override fun getItemCount(): Int = datas!!.size
+
+    // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(datas[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-        return mData!!.size
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val txtcontent: TextView = itemView.findViewById(R.id.tv_rv_content)
+        fun bind(item: RecyclerItem) {
+            txtcontent.text = item.toString()
+            Glide.with(itemView).load(item.toString())
+        }
     }
-
 }
+

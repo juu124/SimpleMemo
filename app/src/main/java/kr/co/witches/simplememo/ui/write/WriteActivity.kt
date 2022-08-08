@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
@@ -42,12 +43,18 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             val intent = result.data
+            // 값 담기
             val uri: Uri? = intent!!.data
+            // 화면에 사진 보여주기
             binding.ivImage.setImageURI(uri)
             Glide.with(this@WriteActivity)
                 .load(uri)
                 .into(binding.ivImage)
             Log.d("TAG", "import image success")
+            //Log.d("TAG", "image >>> ${binding.ivImage.drawable}")
+            Log.d("TAG", "image >>> ${ResourcesCompat.getDrawable(resources, R.drawable.img_sample, null)}")
+            //Log.d("TAG", "iportbtn >>> ${binding.ivImage.setImageBitmap(bitmap)}")
+
         } else {
             Log.d("TAG", "import image false")
         }
@@ -62,15 +69,16 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             val extras = it.data!!.extras
             // bitmap으로 타입 변경
             bitmap = extras?.get("data") as Bitmap
-            // 화면에 보여주기
+            // 화면에 사진 보여주기
             binding.ivImage.setImageBitmap(bitmap)
             Log.d("TAG", "camera capture success")
+            //Log.d("TAG", "take picture >>> ${binding.ivImage}")
         } else {
             Log.d("TAG", "camera capture false")
         }
     }
 
-    // 카메라 권한 확인 및 실행
+    // 카메라 권한 확인 T/F
     private fun checkPermissionCamera(): Boolean {
         Log.d(
             "TAG",
@@ -92,12 +100,14 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
             && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
         ) {
+            // 권한 부여 실패
             Log.d(
                 "TAG",
                 "permission fail camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
             )
             return true
         } else {
+            // 권한 부여 성공
             Log.d(
                 "TAG",
                 "permission success camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
@@ -130,22 +140,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             cameraActivityResult.launch(intent)
         }*/
     }
-
-/*    @Override
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_IMAGE_CAPTURE) {
-            var count = grantResults.count { it == PackageManager.PERMISSION_DENIED }
-            if (count != 0) {
-                Toast.makeText(applicationContext, "권한을 동의해주세요.", Toast.LENGTH_SHORT).show()
-                finish()
-            }
-        }
-    }*/
 
     // 갤러리 권한 확인 T/F
     private fun checkPermissionGallery(): Boolean {

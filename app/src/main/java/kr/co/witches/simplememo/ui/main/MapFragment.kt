@@ -155,8 +155,8 @@ class MapFragment : Fragment(),
                 val longitude = location.longitude
                 val latitude = location.latitude
                 val altitude = location.altitude
-                Log.d("Location", "Latitude : $latitude, Longitude : $longitude, altitude: $altitude")
-
+                Log.d("TAG", "Latitude : $latitude, Longitude : $longitude, altitude: $altitude")
+                Toast.makeText(requireContext(), "Latitude : $latitude, Longitude : $longitude, altitude: $altitude", Toast.LENGTH_SHORT).show()
             }
 
             override fun onProviderEnabled(provider: String) {

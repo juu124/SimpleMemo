@@ -18,11 +18,11 @@
             type="kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel" />
     </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            tools:context=".ui.main.MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.main.MainActivity">
 
         <Button
             android:id="@+id/btn_main_add_memo"
@@ -39,36 +39,42 @@
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent="0.8" />
 
+        <!-- Todo : - 즐겨찾기 버튼으로 변경 On / Off -->
+        <!--android:onCheckedChanged="@{mainViewModel.favorite ? mainViewModel.getFavoriteData() : mainViewModel.getAllData()}"-->
+        <!--android:onCheckedChanged="@{() -> mainViewModel.setFavorite()}"-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main_memos"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_main_add_memo"
             app:layout_constraintVertical_weight="1"
-            tools:listitem="@layout/item_memo_image" />
+            tools:listitem="@layout/recyclerview_item" />
 
-            <!-- Todo : - 즐겨찾기 버튼으로 변경 On / Off -->
-            <!--android:onCheckedChanged="@{mainViewModel.favorite ? mainViewModel.getFavoriteData() : mainViewModel.getAllData()}"-->
-            <!--android:onCheckedChanged="@{() -> mainViewModel.setFavorite()}"-->
-            <CheckBox
-                android:id="@+id/btn_favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:checked="@{mainViewModel.isFavorite()}"
-                android:includeFontPadding="false"
-                android:text=""
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1"
-                tools:ignore="UsingOnClickInXml" />
+        <CheckBox
+            android:id="@+id/btn_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:checked="@{mainViewModel.isFavorite()}"
+            android:includeFontPadding="false"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1"
+            tools:ignore="UsingOnClickInXml" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
