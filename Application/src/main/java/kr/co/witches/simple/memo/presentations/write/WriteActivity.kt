@@ -1,6 +1,7 @@
 package kr.co.witches.simple.memo.presentations.write
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -92,11 +93,16 @@ class WriteActivity : AppCompatActivity() {
         }
     }
 
+    /* 사진 - 카메라, 저장소(2개) 권한 부여
+    * 지도 - 위치(2개) 권한 부여 */
+
     private val mOnClickListener = View.OnClickListener {
         val position = it.tag.toString().toInt()
         println(">>> position : $position")
         //  이미지는 이미지
+        binding.ibMemoPic
         //  지도는 지도
+        binding.ibMemoMap
         //  텍스트는 내용 수정
     }
 }

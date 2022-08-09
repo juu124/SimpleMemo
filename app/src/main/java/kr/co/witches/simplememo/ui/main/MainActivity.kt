@@ -1,3 +1,4 @@
+/*
 package kr.co.witches.simplememo.ui.main
 
 import android.content.Intent
@@ -13,10 +14,12 @@ import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModelFactory
 import kr.co.witches.simplememo.databinding.ActivityMainBinding
 import kr.co.witches.simplememo.ui.write.WriteActivity
 
+*/
 /**
  * MVVM 패턴 적용
  *  -> 액티비티에서 처리 : 뷰
- */
+ *//*
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var simpleMemoListAdapter: SimpleMemoListAdapter
@@ -79,4 +82,4 @@ class MainActivity : AppCompatActivity() {
     private fun addListeners() {
 
     }
-}
+}*/
