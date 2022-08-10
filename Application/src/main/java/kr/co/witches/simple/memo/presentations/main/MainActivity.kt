@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -87,6 +88,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnWrite.setOnClickListener {
             startWriteActivity(null)
+            Log.d("TAG", "btnWrite")
         }
         binding.rvMemos.layoutManager =
             LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
@@ -123,6 +125,7 @@ class MainActivity : AppCompatActivity() {
         println(">>> position : $position")
         //  상세 화면으로 이동
         startWriteActivity(position)
+        Log.d("TAG", "mOnClickListener >>> detailview")
     }
 
     inline fun <reified T> genericType() = object : TypeToken<T>() {}.type
@@ -143,8 +146,11 @@ class MainActivity : AppCompatActivity() {
     private fun startWriteActivity(position: Int?) {
         val intent = Intent(this@MainActivity, WriteActivity::class.java)
         position?.let {
+            // add+는 null, mOnClickListener는 거기에 들어온 position 값
             intent.putExtra("MEMO", mData[it])
         }
+        // WriteActivity로 이동
         startActivity(intent)
+        Log.d("TAG", "startActivity(intent) >>> WriteActivity")
     }
 }

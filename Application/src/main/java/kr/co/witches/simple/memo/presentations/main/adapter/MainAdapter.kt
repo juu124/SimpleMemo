@@ -53,15 +53,18 @@ class MainAdapter(
             mImageLayout.visibility = View.GONE
 
             if (datum.type == "A") {
+                // 메모
                 mMemoTextLayout.visibility = View.VISIBLE
                 mMemoTextView.text = datum.contents
             } else if (datum.type == "B") {
+                // 사진
                 mImageLayout.visibility = View.VISIBLE
                 Glide.with(context)
                     .load(datum.contents)
                     .placeholder(R.drawable.img_sample)
                     .into(mImageView)
             } else if (datum.type == "C") {
+                // 지도
                 mMapLayout.visibility = View.VISIBLE
                 mMapWrapperLayout.visibility = View.VISIBLE
                 mMapWrapperLayout.setOnClickListener(onClickListener)
