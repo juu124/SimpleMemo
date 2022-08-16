@@ -31,9 +31,9 @@ import kr.co.witches.simplememo.model.MemoContentVO
 import kr.co.witches.simplememo.model.MemoVO
 import kr.co.witches.simplememo.ui.main.MapFragment
 
-class WriteActivity /*: AppCompatActivity(), OnMapReadyCallback */{
+class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
 
-   /* private lateinit var binding: ActivityWriteBinding
+    private lateinit var binding: ActivityWriteBinding
     lateinit var memoViewModel: MemoViewModel
     lateinit var bitmap: Bitmap
 
@@ -294,5 +294,5 @@ class WriteActivity /*: AppCompatActivity(), OnMapReadyCallback */{
                 .position(LatLng(0.0, 0.0))
                 .title("마커!")
         )
-    }*/
+    }
 }

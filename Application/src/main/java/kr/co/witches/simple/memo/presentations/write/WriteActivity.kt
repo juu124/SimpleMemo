@@ -25,27 +25,7 @@ class WriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWriteBinding
 
-    lateinit var bitmap: Bitmap
-
     var mDatum: MemoVO? = null
-
-    // 카메라로 이동
-    val cameraActivityResult = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == RESULT_OK && it.data != null) {
-            // 값 담기
-            val extras = it.data!!.extras
-            // bitmap으로 타입 변경
-            bitmap = extras?.get("data") as Bitmap
-            // 화면에 사진 보여주기
-            // binding.ivImage.setImageBitmap(bitmap)
-            Log.d("TAG", "camera capture success")
-            //Log.d("TAG", "take picture >>> ${binding.ivImage}")
-        } else {
-            Log.d("TAG", "camera capture false")
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,59 +77,6 @@ class WriteActivity : AppCompatActivity() {
                 binding.layoutMemoPlus.visibility = View.VISIBLE
                 Log.d("TAG", "initViews >>> visibility = View.VISIBLE")
                 binding.ibMemoPlus.setImageResource(R.drawable.memo_close)
-
-                // 사진
-                binding.ibMemoPic.setOnClickListener {
-                    Log.d("TAG", "ibMemoPic")
-                    /*AlertDialog.Builder(this)
-                        .setTitle("이미지 업로드")
-                        .setMessage("업로드할 이미지 선택")
-                        // 카메라
-                        .setPositiveButton("카메라", object : DialogInterface.OnClickListener {
-                            override fun onClick(dialog: DialogInterface, which: Int) {
-                                Log.d("TAG", "ibMemoPic onclick")
-                                // 카메라 접근을 위한 접근 확인 및 실행
-                                if (checkPermissionCamera()) {
-                                    // 권한 없는 경우
-                                    requestPermissionCamera()
-                                } else {
-                                    // 권한 있는 경우
-                                    takePictureIntent()
-
-                                }
-                            }
-                        })
-                        // 갤러리 이동
-                        .setNegativeButton("갤러리", object : DialogInterface.OnClickListener {
-                            override fun onClick(dialog: DialogInterface, which: Int) {
-                                //  갤러리 접근을 위한 접근 확인
-                                if (checkPermissionGallery()) {
-                                    // 권한 있는 경우(이미지 가져오기)
-                                    importImageIntent()
-                                } else {
-                                    // 권한 없는 경우(권한 재 요청)
-                                    requestPermissionGallery()
-                                }
-                            }
-                        })
-                        .setNeutralButton("취소",
-                            object : DialogInterface.OnClickListener {
-                                override fun onClick(dialog: DialogInterface, which: Int) {
-                                }
-                            })
-                        .create()
-                        .show()*/
-                }
-
-                // 영상
-                binding.ibChatVideo.setOnClickListener {
-                    Log.d("TAG", "ibChatVideo")
-                }
-
-                // 지도
-                binding.ibMemoMap.setOnClickListener {
-                    Log.d("TAG", "ibMemoMap")
-                }
             }
         }
 
@@ -201,70 +128,10 @@ class WriteActivity : AppCompatActivity() {
         }
     }
 
-    /* 사진 - 카메라, 저장소(2개) 권한 부여
-    * 지도 - 위치(2개) 권한 부여 */
-
     private val mOnClickListener = View.OnClickListener {
         val position = it.tag.toString().toInt()
         println(">>> position : $position")
         Log.d("TAG", "mOnClickListener")
     }
-
-    // 카메라 권한
-    private fun checkPermissionCamera(): Boolean {
-        Log.d(
-            "TAG",
-            "checkPermissionCameraCapture"
-        )
-        val permissionCheckCamera =
-            ContextCompat.checkSelfPermission(this@WriteActivity, Manifest.permission.CAMERA)
-        val permissionCheckReadStorage =
-            ContextCompat.checkSelfPermission(
-                this@WriteActivity,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            )
-        val permissionCheckWriteStorage =
-            ContextCompat.checkSelfPermission(
-                this@WriteActivity,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-        if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
-            && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
-            && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
-        ) {
-            // 권한 부여 실패
-            Log.d(
-                "TAG",
-                "permission fail camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
-            )
-            return true
-        } else {
-            // 권한 부여 성공
-            Log.d(
-                "TAG",
-                "permission success camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
-            )
-            return false
-        }
-    }
-
-    // 카메라 권한 없을 때
-    private fun requestPermissionCamera() {
-        Log.d("TAG", "requestPermissionCamera")
-        ActivityCompat.requestPermissions(
-            this@WriteActivity, arrayOf(
-                android.Manifest.permission.CAMERA,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ), 1000
-        )
-    }
-
-    // 카메라 권한 있는 경우(카메라 실행)
-    /*private fun takePictureIntent() {
-        Log.d("TAG", "takePictureIntent")
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        cameraActivityResult.launch(intent)
-    }*/
 }
 
