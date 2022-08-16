@@ -114,7 +114,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             )
             return false
         }
-        *//*if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
+        /*if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
             && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
             && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
         ) {
@@ -138,7 +138,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             Log.d("TAG", "imagecCapture?")
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             cameraActivityResult.launch(intent)
-        }*//*
+        }*/
     }
 
     // 갤러리 권한 확인 T/F
@@ -258,9 +258,9 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 val text = MemoContentVO(MemoContentType.text, etContent.text.toString())
                 content.add(text)
                 val memo = MemoVO(null, content, System.currentTimeMillis(), 0, 0, 0)
-*//*
+/*
                 memoViewModel = ViewModelProvider(this, MemoViewModelFactory(application)).get(MemoViewModel::class.java)
-*//*
+*/
                 Toast.makeText(this, "메모추가버튼2", Toast.LENGTH_SHORT).show()
 
             } else {
@@ -270,7 +270,7 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
         // 메모 작성 취소 버튼
-        //binding.btnBack.setOnClickListener(View.OnClickListener {
+        binding.btnBack.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("작성 취소")
                 .setMessage("메모가 저장이 되지 않았습니다. \n그래도 나가시겠습니까?")
