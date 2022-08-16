@@ -9,5 +9,5 @@ data class MemoItemVO(
     @SerializedName("type")
     val type: String,
     @SerializedName("contents")
-    val contents: String
+    var contents: String
 ) : Parcelable

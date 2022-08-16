@@ -1,7 +1,6 @@
 package kr.co.witches.simple.memo.presentations.write.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -102,7 +101,7 @@ class WriteAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_main_memo, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.item_write_memo, parent, false)
         )
     }
 

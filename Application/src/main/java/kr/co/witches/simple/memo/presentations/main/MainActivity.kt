@@ -5,15 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kr.co.witches.simple.memo.AppVariables
 import kr.co.witches.simple.memo.databinding.ActivityMainBinding
 import kr.co.witches.simple.memo.model.MemoItemVO
 import kr.co.witches.simple.memo.model.MemoVO
@@ -40,8 +41,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     //  전체 데이터
-    private var mData: ArrayList<MemoVO> = arrayListOf()
-    private var mFilteredData: ArrayList<MemoItemVO> = arrayListOf()
+    //private var mData: ArrayList<MemoVO> = arrayListOf()
+    //private var mFilteredData: ArrayList<MemoItemVO> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,9 +89,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnWrite.setOnClickListener {
             startWriteActivity(null)
-            Log.d("TAG", "btnWrite")
         }
-        binding.rvMemos.layoutManager =
+        binding.rvMemos.layoutManager = //GridLayoutManager(this@MainActivity, 2, RecyclerView.VERTICAL, false)
             LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
 
         refreshRecyclerView()
@@ -98,25 +98,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun initData() {
         //  테스트 데이터
-        val assetManager = resources.assets
-        var source: InputStream? = null
-        try {
-            source = assetManager.open("memoList.json");
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        val gson = Gson()
-        val reader = InputStreamReader(source)
-
-        mData = gson.fromJson(reader, genericType<ArrayList<MemoVO>>())
+//        val assetManager = resources.assets
+//        var source: InputStream? = null
+//        try {
+//            source = assetManager.open("memoList.json");
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//
+//        val gson = Gson()
+//        val reader = InputStreamReader(source)
+//
+//        AppVariables.gMemos = gson.fromJson(reader, genericType<ArrayList<MemoVO>>())
 
         refreshData()
     }
 
     private fun refreshData() {
-        for (i in 0 until mData.size) {
-            mFilteredData.add(mData[i].memos[0])
+        AppVariables.mFilteredMemos.clear()
+        for (i in 0 until AppVariables.gMemos.size) {
+            AppVariables.mFilteredMemos.add(AppVariables.gMemos[i].memos[0])
         }
     }
 
@@ -125,19 +126,18 @@ class MainActivity : AppCompatActivity() {
         println(">>> position : $position")
         //  상세 화면으로 이동
         startWriteActivity(position)
-        Log.d("TAG", "mOnClickListener >>> detailview")
     }
 
     inline fun <reified T> genericType() = object : TypeToken<T>() {}.type
 
     private fun refreshRecyclerView() {
         if (binding.rvMemos.adapter == null) {
-            binding.rvMemos.adapter = MainAdapter(this, mFilteredData, mOnClickListener)
+            binding.rvMemos.adapter = MainAdapter(this, AppVariables.mFilteredMemos, mOnClickListener)
         }
 
         binding.rvMemos.adapter?.let { adapter ->
             if (adapter is MainAdapter) {
-                adapter.data = mFilteredData
+                adapter.data = AppVariables.mFilteredMemos
             }
             adapter.notifyDataSetChanged()
         }
@@ -146,11 +146,9 @@ class MainActivity : AppCompatActivity() {
     private fun startWriteActivity(position: Int?) {
         val intent = Intent(this@MainActivity, WriteActivity::class.java)
         position?.let {
-            // add+는 null, mOnClickListener는 거기에 들어온 position 값
-            intent.putExtra("MEMO", mData[it])
+            intent.putExtra("MEMO", AppVariables.gMemos[it])
+            intent.putExtra("MEMO_INDEX", it)
         }
-        // WriteActivity로 이동
         startActivity(intent)
-        Log.d("TAG", "startActivity(intent) >>> WriteActivity")
     }
 }

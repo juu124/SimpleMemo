@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id "com.google.gms.google-services"
 }
 
 android {
@@ -70,6 +69,9 @@ dependencies {
     //  Naver Map - 3.0.0
     implementation 'com.naver.maps:map-sdk:3.15.0'
 
-    //  RecyclerView
-    //implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:1.1.1'
+    //  Image Picker
+    implementation 'com.github.esafirm:android-image-picker:3.0.0-beta1'
+
+    // Fused Location Service
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
 }
