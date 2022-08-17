@@ -51,10 +51,10 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 .load(uri)
                 .into(binding.ivImage)
             Log.d("TAG", "import image success")
-            //Log.d("TAG", "image >>> ${binding.ivImage.drawable}")
-            Log.d("TAG", "image >>> ${ResourcesCompat.getDrawable(resources, R.drawable.img_sample, null)}")
-            //Log.d("TAG", "iportbtn >>> ${binding.ivImage.setImageBitmap(bitmap)}")
-
+            Log.d(
+                "TAG",
+                "image >>> ${ResourcesCompat.getDrawable(resources, R.drawable.img_sample, null)}"
+            )
         } else {
             Log.d("TAG", "import image false")
         }
@@ -114,31 +114,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
             )
             return false
         }
-        /*if ((permissionCheckCamera != PackageManager.PERMISSION_GRANTED)
-            && (permissionCheckReadStorage != PackageManager.PERMISSION_GRANTED)
-            && (permissionCheckWriteStorage != PackageManager.PERMISSION_GRANTED)
-        ) {
-            // 권한 없음
-            Log.d(
-                "TAG",
-                "camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
-            )
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.CAMERA),
-                1000
-            )
-        } else {
-            // 권한 허용
-            Log.d(
-                "TAG",
-                "success camera , readStorage, writeStorage >>> " + permissionCheckCamera + permissionCheckReadStorage + permissionCheckWriteStorage
-            )
-            // 카메라 실행
-            Log.d("TAG", "imagecCapture?")
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            cameraActivityResult.launch(intent)
-        }*/
     }
 
     // 갤러리 권한 확인 T/F
@@ -217,7 +192,6 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                         } else {
                             // 권한 있는 경우
                             takePictureIntent()
-
                         }
                     }
                 })
@@ -237,7 +211,8 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 .setNeutralButton("취소",
                     object : DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, which: Int) {
-                            Toast.makeText(applicationContext, "취소!!!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "취소!!!", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     })
                 .create()
@@ -258,11 +233,8 @@ class WriteActivity : AppCompatActivity(), OnMapReadyCallback {
                 val text = MemoContentVO(MemoContentType.text, etContent.text.toString())
                 content.add(text)
                 val memo = MemoVO(null, content, System.currentTimeMillis(), 0, 0, 0)
-/*
-                memoViewModel = ViewModelProvider(this, MemoViewModelFactory(application)).get(MemoViewModel::class.java)
-*/
+                /* memoViewModel = ViewModelProvider(this, MemoViewModelFactory(application)).get(MemoViewModel::class.java)*/
                 Toast.makeText(this, "메모추가버튼2", Toast.LENGTH_SHORT).show()
-
             } else {
                 Toast.makeText(this, "메모를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 etContent.requestFocus()

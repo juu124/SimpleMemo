@@ -1,7 +1,7 @@
 package kr.co.witches.simplememo.model
 
 enum class MemoContentType {
-
+    A, B, C,
     /**
      * 텍스트
      */

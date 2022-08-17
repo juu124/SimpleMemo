@@ -1,4 +1,4 @@
-package kr.co.witches.simple.memo.presentations.main.adapter
+package kr.co.witches.simplememo.ui.main.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,26 +11,31 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.CameraPosition
-import com.naver.maps.map.CameraUpdate
-import com.naver.maps.map.MapView
-import com.naver.maps.map.overlay.Marker
+import com.google.android.gms.internal.maps.zzaa
+import com.google.android.gms.maps.CameraUpdate
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kr.co.witches.simple.memo.R
-import kr.co.witches.simple.memo.model.MemoItemVO
+import kr.co.witches.simplememo.R
+import kr.co.witches.simplememo.model.MemoContentType
+import kr.co.witches.simplememo.model.MemoContentVO
+import kr.co.witches.simplememo.ui.main.RecyclerItem
 
-class MainAdapter(
+class SimpleMemoListAdapter(
     private val context: Context,
-    var data: ArrayList<MemoItemVO>,
+    var data: ArrayList<MemoContentVO>,
     private val onClickListener: View.OnClickListener
-) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SimpleMemoListAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val mRootLayout: ConstraintLayout = itemView.findViewById(R.id.layout_memo_root)
+        private val mRootlayout: ConstraintLayout = itemView.findViewById(R.id.layout_memo_root)
         private val mMemoTextLayout: LinearLayout = itemView.findViewById(R.id.layout_memo_text)
         private val mMemoTextView: TextView = itemView.findViewById(R.id.tv_memo_text)
         private val mMapLayout: LinearLayout = itemView.findViewById(R.id.layout_memo_map)
@@ -43,27 +48,27 @@ class MainAdapter(
         private val mImageLayout: LinearLayout = itemView.findViewById(R.id.layout_memo_image)
         private val mImageView: ImageView = itemView.findViewById(R.id.iv_memo_image)
 
-        fun bind(datum: MemoItemVO, onClickListener: View.OnClickListener, position: Int) {
-            mRootLayout.setOnClickListener(onClickListener)
-            mRootLayout.tag = position
+        fun bind(datum: MemoContentVO, onClickListener: View.OnClickListener, position: Int) {
+            mRootlayout.setOnClickListener(onClickListener)
+            mRootlayout.tag = position
 
             mMemoTextLayout.visibility = View.GONE
             mMapLayout.visibility = View.GONE
             mMapWrapperLayout.visibility = View.GONE
             mImageLayout.visibility = View.GONE
 
-            if (datum.type == "A") {
+            if (datum.type == MemoContentType.A) {
                 // 메모
                 mMemoTextLayout.visibility = View.VISIBLE
                 mMemoTextView.text = datum.contents
-            } else if (datum.type == "B") {
+            } else if (datum.type == MemoContentType.B) {
                 // 사진
                 mImageLayout.visibility = View.VISIBLE
                 Glide.with(context)
                     .load(datum.contents)
                     .placeholder(R.drawable.img_sample)
                     .into(mImageView)
-            } else if (datum.type == "C") {
+            } else if (datum.type == MemoContentType.C) {
                 // 지도
                 mMapLayout.visibility = View.VISIBLE
                 mMapWrapperLayout.visibility = View.VISIBLE
@@ -73,27 +78,18 @@ class MainAdapter(
                 if (mMapView != null) {
                     mMapView.onCreate(null)
                     mMapView.onResume()
-                    mMapView.getMapAsync { naverMap ->
-                        naverMap.uiSettings.isZoomControlEnabled = false
+                    mMapView.getMapAsync { googleMap ->
+                        googleMap.uiSettings.isZoomControlsEnabled = false
                         val locations = data[position].contents.split(",")
                         if (locations.size == 2) {
                             val location = LatLng(locations[0].toDouble(), locations[1].toDouble())
                             CoroutineScope(Dispatchers.Main).launch {
-                                naverMap.moveCamera(
-                                    CameraUpdate.toCameraPosition(
-                                        CameraPosition(
-                                            location,
-                                            15.0
-                                        )
-                                    )
+                                googleMap.animateCamera(
+                                    CameraUpdateFactory.newCameraPosition()
                                 )
-
-                                //  마커 추가
-                                val marker = Marker()
-                                marker.position = location
-                                marker.map = naverMap
                             }
                         } else {
+                            //  위치 정보 오류
                         }
                     }
                 }
@@ -101,21 +97,21 @@ class MainAdapter(
         }
     }
 
+    // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_main_memo, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.recyclerview_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position], onClickListener, position)
-    }
-
+    // 전체 아이템 갯수 리턴
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onViewRecycled(holder: ViewHolder) {
-        super.onViewRecycled(holder)
+    // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(data[position], onClickListener, position)
     }
 }
+

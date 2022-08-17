@@ -25,7 +25,15 @@ import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
+    //  Java ( 3회독 이상 ) , Kotlin
+    //  Android Platform
+    //  Design Pattern : MVC , MVP , MVVM , MVI
+    //  Code Refactoring
+    //  회사 : 기획, 디자인, 개발 -> QA
+    //  테스트는 핸드폰으로 직접할 것
+
     private lateinit var binding: ActivityMainBinding
+
 
     private var mDataReceiver: DataReceiver = DataReceiver()
 
@@ -98,18 +106,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun initData() {
         //  테스트 데이터
-//        val assetManager = resources.assets
-//        var source: InputStream? = null
-//        try {
-//            source = assetManager.open("memoList.json");
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//
-//        val gson = Gson()
-//        val reader = InputStreamReader(source)
-//
-//        AppVariables.gMemos = gson.fromJson(reader, genericType<ArrayList<MemoVO>>())
+        val assetManager = resources.assets
+        var source: InputStream? = null
+        try {
+            source = assetManager.open("memoList.json");
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        val gson = Gson()
+        val reader = InputStreamReader(source)
+
+        AppVariables.gMemos = gson.fromJson(reader, genericType<ArrayList<MemoVO>>())
 
         refreshData()
     }

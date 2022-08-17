@@ -57,7 +57,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_main_add_memo"
             app:layout_constraintVertical_weight="1"
-            tools:listitem="@layout/recyclerview_item" />
+            tools:listitems="@layout/recyclerview_item" />
 
         <CheckBox
             android:id="@+id/btn_favorite"

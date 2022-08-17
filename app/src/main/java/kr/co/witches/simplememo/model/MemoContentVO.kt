@@ -18,5 +18,5 @@ data class MemoContentVO(
      * I : local image path || binary data
      * M : {kr.co.witches.simplememo.model.MemoLocationVO}
      */
-    , val content: String
+    , val contents: String
 ): Parcelable

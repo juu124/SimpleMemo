@@ -1,4 +1,3 @@
-/*
 package kr.co.witches.simplememo.ui.main
 
 import android.content.Intent
@@ -12,13 +11,13 @@ import kr.co.witches.simplememo.R
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModel
 import kr.co.witches.simplememo.data.database.viewmodel.MemoViewModelFactory
 import kr.co.witches.simplememo.databinding.ActivityMainBinding
+import kr.co.witches.simplememo.ui.main.adapter.SimpleMemoListAdapter
 import kr.co.witches.simplememo.ui.write.WriteActivity
 
-*/
 /**
  * MVVM 패턴 적용
  *  -> 액티비티에서 처리 : 뷰
- *//*
+ */
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -40,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         binding.memoViewModel = memoViewModel
 
         addObservers()
-
         addListeners()
 
         //메모추가 버튼
@@ -51,14 +49,14 @@ class MainActivity : AppCompatActivity() {
 
         // 목록을 눌렀을 때
         binding.rvMainMemos.setOnClickListener {
-           //val intent = Intent(this,  )
+            //val intent = Intent(this,  )
         }
     }
 
     private fun initRecycler() {
         simpleMemoListAdapter = SimpleMemoListAdapter(this)
         binding.rvMainMemos.adapter = simpleMemoListAdapter
-        datas.apply{
+        datas.apply {
             //add()
         }
         //datas.add(RecyclerItem().setContent("hi"))
@@ -80,6 +78,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addListeners() {
-
     }
-}*/
+}

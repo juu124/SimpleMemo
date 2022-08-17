@@ -1,21 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_memo_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <!--하나의 목록(아이템)에 어떤 데이터가 들어가 있어야 하는지-->
-    <!--제목-->
 
-    <TextView
-        android:id="@+id/tv_rv_content"
+    <LinearLayout
+        android:id="@+id/layout_memo_text"
         android:layout_width="match_parent"
-        android:maxHeight="50dp"
-        android:layout_height="wrap_content"
-        android:background="#FF0000"
-        android:textColor="#000000"
-        android:textSize="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_memo_text"
+            android:text="컨텐츠 영역"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_memo_map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h, 16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/layout_map_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_chat_my_map_address"
+            android:text="주소 영역"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_memo_map_click"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#11333333"
+        android:orientation="vertical"
+        android:translationZ="1dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_memo_map"
+        app:layout_constraintDimensionRatio="h, 16:9"
+        app:layout_constraintEnd_toEndOf="@+id/layout_memo_map"
+        app:layout_constraintStart_toStartOf="@+id/layout_memo_map"
+        app:layout_constraintTop_toTopOf="@+id/layout_memo_map">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_memo_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h, 16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_memo_image"
+            android:src="@drawable/img_sample"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
