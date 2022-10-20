@@ -25,13 +25,6 @@ import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
-    //  Java ( 3회독 이상 ) , Kotlin
-    //  Android Platform
-    //  Design Pattern : MVC , MVP , MVVM , MVI
-    //  Code Refactoring
-    //  회사 : 기획, 디자인, 개발 -> QA
-    //  테스트는 핸드폰으로 직접할 것
-
     private lateinit var binding: ActivityMainBinding
 
 
