@@ -1,8 +1,6 @@
 package kr.co.witches.simple.memo.presentations.write
 
 import android.Manifest
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -22,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerMode
 import com.esafirm.imagepicker.features.registerImagePicker
-import com.google.android.gms.location.FusedLocationProviderApi
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +32,6 @@ import kr.co.witches.simple.memo.model.MemoVO
 import kr.co.witches.simple.memo.presentations.base.OnPermissionChecked
 import kr.co.witches.simple.memo.presentations.write.adapter.WriteAdapter
 import kr.co.witches.simple.memo.util.CommonUtil
-import java.util.ArrayList
 
 class WriteActivity : AppCompatActivity() {
 
@@ -203,7 +199,7 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun editText() {
-        val inputMethodManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.showSoftInput(binding.root, 0)
 
         if (mSelectedIndex != -1) {
@@ -215,7 +211,7 @@ class WriteActivity : AppCompatActivity() {
     private val mPhotoLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {
-                Activity.RESULT_OK -> {
+                RESULT_OK -> {
                     //  데이터 삭제
                     CoroutineScope(Dispatchers.Main).launch {
                         mDatum?.memos?.removeAt(mSelectedIndex)
@@ -223,7 +219,7 @@ class WriteActivity : AppCompatActivity() {
                         mSelectedIndex = -1
                     }
                 }
-                Activity.RESULT_CANCELED -> {
+                RESULT_CANCELED -> {
                     mSelectedIndex = -1
                 }
                 else -> {
@@ -355,7 +351,7 @@ class WriteActivity : AppCompatActivity() {
     private val mMapLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {
-                Activity.RESULT_OK -> {
+                RESULT_OK -> {
                     //  데이터 삭제
                     CoroutineScope(Dispatchers.Main).launch {
                         mDatum?.memos?.removeAt(mSelectedIndex)
@@ -363,7 +359,7 @@ class WriteActivity : AppCompatActivity() {
                         mSelectedIndex = -1
                     }
                 }
-                Activity.RESULT_CANCELED -> {
+                RESULT_CANCELED -> {
                     mSelectedIndex = -1
                 }
                 else -> {
@@ -418,7 +414,7 @@ class WriteActivity : AppCompatActivity() {
         }
 
         val locationManager: LocationManager? =
-            getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+            getSystemService(LOCATION_SERVICE) as LocationManager?
         val locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
                 locationManager?.removeUpdates(this)
