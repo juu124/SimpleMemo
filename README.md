@@ -2,7 +2,7 @@
 
 기본 기능 : RxJava + RxAndroid + Retrofit
   
-  
+참고할 사이트  
 => ReactiveX 사이트 https://reactivex.io/  
 => RxAndroid 사이트 https://github.com/ReactiveX/RxAndroid  
 => RxJava 사이트 https://github.com/ReactiveX/RxJava  
@@ -41,7 +41,7 @@ dependencies {
 </code>
 </pre>  
 
-## Gradle 버전 오류
+## Gradle 버전 오류 해결
 1. c:\user\user\AndroidStudioProjects....에 gradle파일이 없다면 추가하기 (*.gradle 아니고 그냥 gradle)
 2. gradle/wrapper/gradle-wrapper.properties 생성하기
 3. gradle-wrapper.properties 파일에distributionUrl=https://services.gradle.org/distributions/gradle-원하는 버전-all.zip 라고 적기
@@ -50,9 +50,9 @@ dependencies {
 ## 목표  
 메모장  
 => 화면 : 목록 화면, 작성 화면, 상세 화면  
-=> 데이터 : 모든 데이터 , 즐겨찾기 데이터  
+=> 데이터 : 모든 메모 데이터 
 => 메모 컨텐츠 : 텍스트 , 이미지 , 지도  
-=> 기능 : 데이터 관리 , 메모 저장, 사진 저장, 지도 등  
+=> 기능 : 데이터 관리 , 메모 저장, 사진 저장, 지도 api를 이용한 위치 입력
   
 작업 진행 순서  
 => 1. 화면 구성  
