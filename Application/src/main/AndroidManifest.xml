@@ -50,7 +50,7 @@
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="zmtiydilbc" />
+            android:value="02k1xds1tv" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
